@@ -1,0 +1,220 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        04/09/2022  10:39:08  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE man.obj TO led flash
+
+
+MEMORY MODEL: SMALL WITH FLOATING POINT ARITHMETIC
+
+
+INPUT MODULES INCLUDED:
+  man.obj (MAN)
+  C:\KEIL_V5\C51\LIB\C51FPS.LIB (?C?FPADD)
+  C:\KEIL_V5\C51\LIB\C51FPS.LIB (?C?FCAST)
+  C:\KEIL_V5\C51\LIB\C51FPS.LIB (?C?CASTF)
+  C:\KEIL_V5\C51\LIB\C51FPS.LIB (POW)
+  C:\KEIL_V5\C51\LIB\C51FPS.LIB (?C?FPGETOPN)
+  C:\KEIL_V5\C51\LIB\C51FPS.LIB (?C?CHKFLOAT)
+  C:\KEIL_V5\C51\LIB\C51FPS.LIB (?C?FPMUL)
+  C:\KEIL_V5\C51\LIB\C51FPS.LIB (?C?FPCMP)
+  C:\KEIL_V5\C51\LIB\C51FPS.LIB (?C?FPNEG)
+  C:\KEIL_V5\C51\LIB\C51FPS.LIB (EXP)
+  C:\KEIL_V5\C51\LIB\C51FPS.LIB (LOG)
+  C:\KEIL_V5\C51\LIB\C51FPS.LIB (?C?FPDIV)
+  C:\KEIL_V5\C51\LIB\C51FPS.LIB (?C?FPSERIES)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?LNEG)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?LLDCODE)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?LLDCODE0)
+
+
+LINK MAP OF MODULE:  led flash (MAN)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0010H     UNIT         _DATA_GROUP_
+                    0018H     0008H                  *** GAP ***
+            BIT     0020H.0   0000H.1   UNIT         _BIT_GROUP_
+                    0020H.1   0000H.7                *** GAP ***
+            IDATA   0021H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     047CH     UNIT         ?C?LIB_CODE
+            CODE    0C7CH     0135H     UNIT         ?PR?LOG?LOG
+            CODE    0DB1H     011BH     UNIT         ?PR?MAIN?MAN
+            CODE    0ECCH     0117H     UNIT         ?PR?_POW?POW
+            CODE    0FE3H     009AH     UNIT         ?PR?EXP?EXP
+            CODE    107DH     0017H     UNIT         ?PR?_DELAY?MAN
+            CODE    1094H     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   led flash (MAN)
+
+
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/09/2022  10:39:08  PAGE 2
+
+
+SEGMENT                           BIT_GROUP          DATA_GROUP 
+  +--> CALLED SEGMENT          START    LENGTH     START    LENGTH
+------------------------------------------------------------------
+?C_C51STARTUP                  -----    -----      -----    -----
+  +--> ?PR?MAIN?MAN
+
+?PR?MAIN?MAN                   -----    -----      0008H    0002H
+  +--> ?PR?_POW?POW
+  +--> ?PR?_DELAY?MAN
+
+?PR?_POW?POW                   -----    -----      000AH    000AH
+  +--> ?PR?LOG?LOG
+  +--> ?PR?EXP?EXP
+
+?PR?LOG?LOG                    0020H.0  0000H.1    0014H    0004H
+
+
+
+SYMBOL TABLE OF MODULE:  led flash (MAN)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        MAN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  D:00A8H         PUBLIC        IE
+  C:1089H         PUBLIC        _delay
+  D:00B8H         PUBLIC        IP
+  C:0DB1H         PUBLIC        main
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  D:00C8H         PUBLIC        T2CON
+  D:00D0H         PUBLIC        PSW
+  C:1080H         SYMBOL        L?0021
+  -------         PROC          L?0020
+  -------         ENDPROC       L?0020
+  C:1080H         SYMBOL        L?0021
+  -------         PROC          _DELAY
+  D:0006H         SYMBOL        i
+  C:1089H         LINE#         7
+  C:1089H         LINE#         8
+  C:1089H         LINE#         9
+  C:1093H         LINE#         10
+  -------         ENDPROC       _DELAY
+  -------         PROC          MAIN
+  -------         DO            
+  D:0008H         SYMBOL        i
+  D:0009H         SYMBOL        n
+  -------         ENDDO         
+  C:0DB1H         LINE#         11
+  C:0DB1H         LINE#         12
+  C:0DB1H         LINE#         13
+  C:0DB1H         LINE#         14
+  C:0DB1H         LINE#         15
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/09/2022  10:39:08  PAGE 3
+
+
+  C:0DB4H         LINE#         16
+  C:0DB6H         LINE#         17
+  C:0DB9H         LINE#         18
+  C:0DBCH         LINE#         19
+  C:0DBCH         LINE#         20
+  C:0DEBH         LINE#         21
+  C:0DEEH         LINE#         22
+  C:0DF7H         LINE#         24
+  C:0DFAH         LINE#         25
+  C:0DFAH         LINE#         26
+  C:0E2CH         LINE#         27
+  C:0E2FH         LINE#         28
+  C:0E38H         LINE#         29
+  C:0E3BH         LINE#         30
+  C:0E3BH         LINE#         31
+  C:0E72H         LINE#         32
+  C:0E75H         LINE#         33
+  C:0E7EH         LINE#         35
+  C:0E8BH         LINE#         36
+  C:0E8BH         LINE#         37
+  C:0EC5H         LINE#         38
+  C:0EC8H         LINE#         39
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        MAN
+
+  -------         MODULE        ?C?FPADD
+  C:0807H         PUBLIC        ?C?FPADD
+  C:0803H         PUBLIC        ?C?FPSUB
+  -------         ENDMOD        ?C?FPADD
+
+  -------         MODULE        ?C?FCAST
+  C:0902H         PUBLIC        ?C?FCASTC
+  C:08FDH         PUBLIC        ?C?FCASTI
+  C:08F8H         PUBLIC        ?C?FCASTL
+  -------         ENDMOD        ?C?FCAST
+
+  -------         MODULE        ?C?CASTF
+  C:0936H         PUBLIC        ?C?CASTF
+  -------         ENDMOD        ?C?CASTF
+
+  -------         MODULE        POW
+  D:000AH         PUBLIC        ?_pow?BYTE
+  C:0ECCH         PUBLIC        _pow
+  -------         ENDMOD        POW
+
+  -------         MODULE        ?C?CHKFLOAT
+  C:09B7H         PUBLIC        ?C?CHKFLOAT
+  -------         ENDMOD        ?C?CHKFLOAT
+
+  -------         MODULE        ?C?FPMUL
+  C:09D1H         PUBLIC        ?C?FPMUL
+  -------         ENDMOD        ?C?FPMUL
+
+  -------         MODULE        ?C?FPCMP
+  C:0AD9H         PUBLIC        ?C?FPCMP
+  C:0AD7H         PUBLIC        ?C?FPCMP3
+  -------         ENDMOD        ?C?FPCMP
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/09/2022  10:39:08  PAGE 4
+
+
+
+  -------         MODULE        ?C?FPNEG
+  C:0B50H         PUBLIC        ?C?FPNEG
+  -------         ENDMOD        ?C?FPNEG
+
+  -------         MODULE        EXP
+  C:101BH         PUBLIC        _EXP
+  -------         ENDMOD        EXP
+
+  -------         MODULE        LOG
+  C:0CB0H         PUBLIC        _LOG
+  C:0CACH         PUBLIC        _LOG10
+  -------         ENDMOD        LOG
+
+  -------         MODULE        ?C?FPDIV
+  C:0B64H         PUBLIC        ?C?FPDIV
+  -------         ENDMOD        ?C?FPDIV
+
+  -------         MODULE        ?C?LNEG
+  C:0C4EH         PUBLIC        ?C?LNEG
+  -------         ENDMOD        ?C?LNEG
+
+  -------         MODULE        ?C?LLDCODE
+  C:0C5CH         PUBLIC        ?C?LLDCODE
+  -------         ENDMOD        ?C?LLDCODE
+
+  -------         MODULE        ?C?LLDCODE0
+  C:0C6CH         PUBLIC        ?C?LLDCODE0
+  -------         ENDMOD        ?C?LLDCODE0
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0132H BYTE (14%) *
+******************************************************************************
+
+Program Size: data=25.1 xdata=0 code=2211
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

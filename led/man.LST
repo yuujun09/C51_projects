@@ -1,0 +1,64 @@
+C51 COMPILER V9.54   MAN                                                                   04/09/2022 10:39:08 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE MAN
+OBJECT MODULE PLACED IN man.OBJ
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE man.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND TABS(2)
+
+line level    source
+
+   1          #include "reg52.h"
+   2          #include "intrins.h"
+   3          #include <math.h>
+   4          typedef unsigned char u8;
+   5          typedef unsigned int u16;
+   6          #define led P2
+   7          void delay(int i)
+   8          {
+   9   1      while(i--);
+  10   1      }
+  11          void main()
+  12          {
+  13   1        while(1)
+  14   1        {
+  15   2          u8 i = 0;
+  16   2          u8 n = 0;
+  17   2          led = 0xfe;    //1111  1110
+  18   2          for(i=1;i<8;i++)      //1111  1100                
+  19   2          {
+  20   3             led -=  pow(2,i);
+  21   3             delay(5000);
+  22   3          } 
+  23   2                   //0000  0000
+  24   2          for(i=0;i<8;i++)
+  25   2          {
+  26   3            led += pow(2,i);    //0000 0001
+  27   3            delay(5000);
+  28   3          } 
+  29   2          for(i=0;i<8;i++)
+  30   2          {
+  31   3            led -= pow(2,7-i);    //0111 1111
+  32   3            delay(5000);
+  33   3          }
+  34   2                        //0000 0000
+  35   2          for(i=0;i<8;i++)
+  36   2          {
+  37   3            led += pow(2,8-i);    //1000 0000
+  38   3            delay(5000);
+  39   3          }           
+  40   2        }
+  41   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    306    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       2
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
