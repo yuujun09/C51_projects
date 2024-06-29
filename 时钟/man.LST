@@ -1,0 +1,92 @@
+C51 COMPILER V9.01   MAN                                                                   01/06/2021 18:42:24 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE MAN
+OBJECT MODULE PLACED IN man.OBJ
+COMPILER INVOKED BY: D:\C51\C51\BIN\C51.EXE man.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include "reg52.h"
+   2          #include "intrins.h"
+   3          typedef unsigned char u8;
+   4          typedef unsigned int u16;
+   5          sbit led=P2^0;
+   6          sbit LSA=P2^2;
+   7          sbit LSB=P2^3;
+   8          sbit LSC=P2^4;
+   9          
+  10          u8 code arr[] = {0x3f,0x06,0x5b,0x4f,0x66,0x6d,0x7d,0x07,0x7f,0x6f,0x77};
+  11          u16 a=0;
+  12          u16 i=0;
+  13          
+  14          void delay(u16 k)
+  15          {
+  16   1              while(k--);
+  17   1      }
+  18          
+  19          void display(u16 a)
+  20          {        
+  21   1              u16 k;  
+  22   1                      for(k=0;k<6;k++)
+  23   1                      {
+  24   2                              switch(k)
+  25   2                                      {
+  26   3                                      case(0):  LSA=LSB=LSC=0;  P0 = arr[a%10]; break;
+  27   3                                      case(1):  LSA=1;LSB=LSC=0; P0 = arr[(a/10)%6];  break;
+  28   3                                      case(2):  LSA=LSB=1;LSC=0; P0 = arr[(a/60)%10]; break;
+  29   3                                      case(3):  LSA=LSB=0;LSC=1; P0 =arr[(a/600)%60%10];  break;
+  30   3                                      case(4):  LSA=0;LSB=LSC=1;P0 = arr[(a/3600)%10];  break;
+  31   3                                      case(5):  LSA=LSB=LSC=1;  P0 = arr[(a/36000)%3600%10]; break;                           
+  32   3                                      }       
+  33   2                              delay(5); 
+  34   2                              P0=0x00;
+  35   2                      }       
+  36   1      }
+  37          
+  38          void timer0Init()  //计时器初始化
+  39          {
+  40   1              TMOD|=0x01;        //或运算防止拉低电平对之前控制位的影响
+  41   1              TH0=0X3C;
+  42   1              TL0=0XAF;               //对应50毫秒
+  43   1              ET0=1;
+  44   1              EA=1;
+  45   1              TR0=1;
+  46   1      }
+  47          
+  48          void main()
+  49          {
+  50   1              timer0Init();
+  51   1              while(1)
+  52   1              {
+  53   2                      if(TF0 == 1)
+  54   2                      {
+  55   3                      TF0 = 0;
+C51 COMPILER V9.01   MAN                                                                   01/06/2021 18:42:24 PAGE 2   
+
+  56   3                      i++;
+  57   3                      TH0=0X3C;
+  58   3                      TL0=0XAF;
+  59   3                      }
+  60   2                      if(i==20)
+  61   2                      {
+  62   3                              a++;
+  63   3                              i=0;
+  64   3                      }
+  65   2                      display(a);
+  66   2              }
+  67   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    344    ----
+   CONSTANT SIZE    =     11    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      4       4
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

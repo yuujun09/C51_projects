@@ -1,0 +1,156 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        03/09/2021  21:26:07  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+D:\C51\C51\BIN\BL51.EXE man.obj TO led flash
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  man.obj (MAN)
+  D:\C51\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  led flash (MAN)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0002H     UNIT         _DATA_GROUP_
+            DATA    000AH     0001H     UNIT         ?DT?MAN
+            IDATA   000BH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0085H     UNIT         ?PR?MAIN?MAN
+            CODE    0088H     007DH     UNIT         ?PR?KEY?MAN
+            CODE    0105H     000CH     UNIT         ?C_C51STARTUP
+            CODE    0111H     000BH     UNIT         ?PR?_DELAY?MAN
+            CODE    011CH     000BH     UNIT         ?CO?MAN
+
+
+
+OVERLAY MAP OF MODULE:   led flash (MAN)
+
+
+SEGMENT                          DATA_GROUP 
+  +--> CALLED SEGMENT          START    LENGTH
+----------------------------------------------
+?C_C51STARTUP                  -----    -----
+  +--> ?PR?MAIN?MAN
+
+?PR?MAIN?MAN                   0008H    0001H
+  +--> ?PR?KEY?MAN
+  +--> ?CO?MAN
+
+?PR?KEY?MAN                    0009H    0001H
+  +--> ?PR?_DELAY?MAN
+
+
+
+SYMBOL TABLE OF MODULE:  led flash (MAN)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        MAN
+BL51 BANKED LINKER/LOCATER V6.22                                                      03/09/2021  21:26:07  PAGE 2
+
+
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  C:0111H         PUBLIC        _delay
+  C:0003H         PUBLIC        main
+  C:011CH         PUBLIC        arr
+  C:0088H         PUBLIC        key
+  D:000AH         PUBLIC        a
+  B:00A0H.2       PUBLIC        LSA
+  B:00A0H.3       PUBLIC        LSB
+  B:00A0H.4       PUBLIC        LSC
+  -------         PROC          _DELAY
+  D:0006H         SYMBOL        i
+  C:0111H         LINE#         16
+  C:0111H         LINE#         17
+  C:0111H         LINE#         18
+  C:011BH         LINE#         19
+  -------         ENDPROC       _DELAY
+  -------         PROC          KEY
+  -------         DO            
+  D:0009H         SYMBOL        b
+  -------         ENDDO         
+  C:0088H         LINE#         21
+  C:0088H         LINE#         22
+  C:0088H         LINE#         23
+  C:008BH         LINE#         24
+  C:008EH         LINE#         25
+  C:0094H         LINE#         26
+  C:0094H         LINE#         27
+  C:009BH         LINE#         28
+  C:00A1H         LINE#         29
+  C:00A1H         LINE#         30
+  C:00A4H         LINE#         31
+  C:00B6H         LINE#         32
+  C:00B6H         LINE#         33
+  C:00BBH         LINE#         34
+  C:00C0H         LINE#         35
+  C:00C5H         LINE#         36
+  C:00C8H         LINE#         37
+  C:00C8H         LINE#         38
+  C:00CBH         LINE#         39
+  C:00DAH         LINE#         40
+  C:00DAH         LINE#         41
+  C:00DAH         LINE#         42
+  C:00DEH         LINE#         43
+  C:00E2H         LINE#         44
+  C:00E8H         LINE#         45
+  C:00E8H         LINE#         46
+  C:00FBH         LINE#         47
+  C:00FBH         LINE#         48
+  C:0102H         LINE#         49
+  C:0104H         LINE#         50
+  C:0104H         LINE#         51
+  C:0104H         LINE#         52
+  -------         ENDPROC       KEY
+  -------         PROC          MAIN
+BL51 BANKED LINKER/LOCATER V6.22                                                      03/09/2021  21:26:07  PAGE 3
+
+
+  -------         DO            
+  D:0008H         SYMBOL        i
+  -------         ENDDO         
+  C:0003H         LINE#         53
+  C:0003H         LINE#         54
+  C:0003H         LINE#         55
+  C:0005H         LINE#         56
+  C:0007H         LINE#         57
+  C:0009H         LINE#         58
+  C:0009H         LINE#         59
+  C:0009H         LINE#         61
+  C:000CH         LINE#         62
+  C:000FH         LINE#         63
+  C:000FH         LINE#         64
+  C:0035H         LINE#         65
+  C:0035H         LINE#         66
+  C:003DH         LINE#         67
+  C:0045H         LINE#         68
+  C:004DH         LINE#         69
+  C:0055H         LINE#         70
+  C:005DH         LINE#         71
+  C:0065H         LINE#         72
+  C:006DH         LINE#         73
+  C:0073H         LINE#         74
+  C:0073H         LINE#         75
+  C:007BH         LINE#         76
+  C:007EH         LINE#         77
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        MAN
+
+Program Size: data=12.0 xdata=0 code=295
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
