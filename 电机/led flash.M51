@@ -1,0 +1,96 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        12/24/2020  22:13:50  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+D:\C51\C51\BIN\BL51.EXE man.obj TO led flash
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  man.obj (MAN)
+  D:\C51\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  led flash (MAN)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            IDATA   0008H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0015H     UNIT         ?PR?MAIN?MAN
+            CODE    0018H     000CH     UNIT         ?C_C51STARTUP
+            CODE    0024H     000BH     UNIT         ?PR?_DELAY?MAN
+
+
+
+OVERLAY MAP OF MODULE:   led flash (MAN)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?MAN
+
+?PR?MAIN?MAN
+  +--> ?PR?_DELAY?MAN
+
+
+
+SYMBOL TABLE OF MODULE:  led flash (MAN)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        MAN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00B0H         PUBLIC        P3
+  D:00A8H         PUBLIC        IE
+  C:0024H         PUBLIC        _delay
+  D:00B8H         PUBLIC        IP
+  C:0003H         PUBLIC        main
+  D:0098H         PUBLIC        SCON
+BL51 BANKED LINKER/LOCATER V6.22                                                      12/24/2020  22:13:50  PAGE 2
+
+
+  D:0088H         PUBLIC        TCON
+  B:0090H.3       PUBLIC        moto
+  D:00C8H         PUBLIC        T2CON
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          _DELAY
+  D:0006H         SYMBOL        i
+  C:0024H         LINE#         13
+  C:0024H         LINE#         14
+  C:0024H         LINE#         15
+  C:002EH         LINE#         16
+  -------         ENDPROC       _DELAY
+  -------         PROC          MAIN
+  -------         DO            
+  D:0005H         SYMBOL        i
+  -------         ENDDO         
+  C:0003H         LINE#         24
+  C:0003H         LINE#         25
+  C:0003H         LINE#         27
+  C:0005H         LINE#         28
+  C:0007H         LINE#         29
+  C:0007H         LINE#         30
+  C:0009H         LINE#         31
+  C:0010H         LINE#         32
+  C:0014H         LINE#         33
+  C:0016H         LINE#         35
+  C:0016H         LINE#         36
+  C:0016H         LINE#         38
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        MAN
+
+Program Size: data=9.0 xdata=0 code=47
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

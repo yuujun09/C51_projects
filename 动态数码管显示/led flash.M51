@@ -1,0 +1,301 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        05/05/2022  22:38:30  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE man.obj TO led flash
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  man.obj (MAN)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?UIDIV)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?SLDIV)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_INIT)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?ULDIV)
+
+
+LINK MAP OF MODULE:  led flash (MAN)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     000DH     UNIT         ?DT?MAN
+            IDATA   0015H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0003H     ABSOLUTE     
+                    0006H     0005H                  *** GAP ***
+            CODE    000BH     0003H     ABSOLUTE     
+                    000EH     0005H                  *** GAP ***
+            CODE    0013H     0003H     ABSOLUTE     
+                    0016H     07EAH                  *** GAP ***
+            CODE    0800H     0123H     UNIT         ?C?LIB_CODE
+            CODE    0923H     008CH     UNIT         ?C_C51STARTUP
+            CODE    09AFH     007BH     UNIT         ?PR?CLOCK_REFRESH?MAN
+            CODE    0A2AH     0067H     UNIT         ?PR?DISPLAY?MAN
+            CODE    0A91H     005EH     UNIT         ?PR?TIME0?MAN
+            CODE    0AEFH     0052H     UNIT         ?PR?ZHONGDUAN1?MAN
+            CODE    0B41H     004AH     UNIT         ?PR?ZHONGDUAN0?MAN
+            CODE    0B8BH     0044H     UNIT         ?C?LDIV
+            CODE    0BCFH     0022H     UNIT         ?C_INITSEG
+            CODE    0BF1H     0014H     UNIT         ?PR?MAIN?MAN
+            CODE    0C05H     0010H     UNIT         ?PR?TIMER0INIT?MAN
+            CODE    0C15H     000BH     UNIT         ?PR?_DELAY?MAN
+            CODE    0C20H     000BH     UNIT         ?CO?MAN
+            CODE    0C2BH     0007H     UNIT         ?PR?OPEN0?MAN
+            CODE    0C32H     0007H     UNIT         ?PR?OPEN1?MAN
+
+
+
+OVERLAY MAP OF MODULE:   led flash (MAN)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+BL51 BANKED LINKER/LOCATER V6.22                                                      05/05/2022  22:38:30  PAGE 2
+
+
+---------------------
+?PR?TIME0?MAN
+  +--> ?PR?CLOCK_REFRESH?MAN
+  +--> ?PR?DISPLAY?MAN
+
+?PR?DISPLAY?MAN
+  +--> ?CO?MAN
+  +--> ?PR?_DELAY?MAN
+
+*** NEW ROOT ***************************************************
+
+?PR?ZHONGDUAN0?MAN
+  +--> ?PR?DISPLAY?MAN
+
+*** NEW ROOT ***************************************************
+
+?PR?ZHONGDUAN1?MAN
+  +--> ?PR?CLOCK_REFRESH?MAN
+  +--> ?PR?DISPLAY?MAN
+
+*** NEW ROOT ***************************************************
+
+?C_C51STARTUP
+  +--> ?PR?MAIN?MAN
+  +--> ?C_INITSEG
+
+?PR?MAIN?MAN
+  +--> ?PR?OPEN0?MAN
+  +--> ?PR?OPEN1?MAN
+  +--> ?PR?TIMER0INIT?MAN
+  +--> ?PR?DISPLAY?MAN
+
+
+
+SYMBOL TABLE OF MODULE:  led flash (MAN)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        MAN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  C:0B41H         PUBLIC        zhongduan0
+  C:0AEFH         PUBLIC        zhongduan1
+  B:00A8H.7       PUBLIC        EA
+  D:00A8H         PUBLIC        IE
+  D:0008H         PUBLIC        clock
+  C:0C15H         PUBLIC        _delay
+  D:000AH         PUBLIC        h1
+  D:00B8H         PUBLIC        IP
+  D:000BH         PUBLIC        h2
+  D:000CH         PUBLIC        m1
+  D:000DH         PUBLIC        m2
+  D:000EH         PUBLIC        s1
+BL51 BANKED LINKER/LOCATER V6.22                                                      05/05/2022  22:38:30  PAGE 3
+
+
+  D:000FH         PUBLIC        s2
+  C:0BF1H         PUBLIC        main
+  D:0010H         PUBLIC        time
+  D:0098H         PUBLIC        SCON
+  D:0089H         PUBLIC        TMOD
+  D:0088H         PUBLIC        TCON
+  D:0012H         PUBLIC        temp
+  D:0014H         PUBLIC        zero_flag
+  C:0C20H         PUBLIC        arr
+  B:00A8H.1       PUBLIC        ET0
+  D:008CH         PUBLIC        TH0
+  B:00A8H.0       PUBLIC        EX0
+  B:0088H.0       PUBLIC        IT0
+  B:00A8H.2       PUBLIC        EX1
+  B:0088H.2       PUBLIC        IT1
+  D:008AH         PUBLIC        TL0
+  B:0088H.4       PUBLIC        TR0
+  B:00A0H.2       PUBLIC        LSA
+  C:0A91H         PUBLIC        time0
+  B:00A0H.3       PUBLIC        LSB
+  B:00A0H.4       PUBLIC        LSC
+  C:09AFH         PUBLIC        clock_refresh
+  C:0C2BH         PUBLIC        open0
+  C:0C32H         PUBLIC        open1
+  D:00C8H         PUBLIC        T2CON
+  C:0C05H         PUBLIC        timer0Init
+  C:0A2AH         PUBLIC        display
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          _DELAY
+  D:0006H         SYMBOL        i
+  C:0C15H         LINE#         24
+  C:0C15H         LINE#         25
+  C:0C15H         LINE#         26
+  C:0C1FH         LINE#         27
+  -------         ENDPROC       _DELAY
+  -------         PROC          TIMER0INIT
+  C:0C05H         LINE#         29
+  C:0C05H         LINE#         30
+  C:0C05H         LINE#         31
+  C:0C08H         LINE#         32
+  C:0C0BH         LINE#         33
+  C:0C0EH         LINE#         34
+  C:0C10H         LINE#         35
+  C:0C12H         LINE#         36
+  C:0C14H         LINE#         37
+  -------         ENDPROC       TIMER0INIT
+  -------         PROC          OPEN0
+  C:0C2BH         LINE#         39
+  C:0C2BH         LINE#         40
+  C:0C2BH         LINE#         41
+  C:0C2DH         LINE#         42
+  C:0C2FH         LINE#         43
+  C:0C31H         LINE#         44
+  -------         ENDPROC       OPEN0
+  -------         PROC          OPEN1
+  C:0C32H         LINE#         46
+  C:0C32H         LINE#         47
+BL51 BANKED LINKER/LOCATER V6.22                                                      05/05/2022  22:38:30  PAGE 4
+
+
+  C:0C32H         LINE#         48
+  C:0C34H         LINE#         49
+  C:0C36H         LINE#         50
+  C:0C38H         LINE#         51
+  -------         ENDPROC       OPEN1
+  -------         PROC          CLOCK_REFRESH
+  C:09AFH         LINE#         53
+  C:09AFH         LINE#         54
+  C:09AFH         LINE#         55
+  C:09CCH         LINE#         56
+  C:09E0H         LINE#         57
+  C:09F4H         LINE#         58
+  C:0A08H         LINE#         59
+  C:0A1CH         LINE#         60
+  C:0A29H         LINE#         61
+  -------         ENDPROC       CLOCK_REFRESH
+  -------         PROC          DISPLAY
+  -------         DO            
+  D:0005H         SYMBOL        i
+  -------         ENDDO         
+  C:0A2AH         LINE#         63
+  C:0A2AH         LINE#         64
+  C:0A2AH         LINE#         67
+  C:0A2CH         LINE#         68
+  C:0A2CH         LINE#         69
+  C:0A40H         LINE#         70
+  C:0A40H         LINE#         71
+  C:0A4AH         LINE#         72
+  C:0A54H         LINE#         73
+  C:0A5EH         LINE#         74
+  C:0A68H         LINE#         75
+  C:0A72H         LINE#         76
+  C:0A80H         LINE#         79
+  C:0A80H         LINE#         80
+  C:0A87H         LINE#         81
+  C:0A8AH         LINE#         82
+  C:0A90H         LINE#         83
+  -------         ENDPROC       DISPLAY
+  -------         PROC          MAIN
+  C:0BF1H         LINE#         85
+  C:0BF1H         LINE#         86
+  C:0BF1H         LINE#         87
+  C:0BF4H         LINE#         88
+  C:0BF7H         LINE#         89
+  C:0BFAH         LINE#         90
+  C:0C00H         LINE#         91
+  C:0C00H         LINE#         92
+  C:0C00H         LINE#         93
+  C:0C03H         LINE#         94
+  -------         ENDPROC       MAIN
+  -------         PROC          TIME0
+  C:0A91H         LINE#         97
+  C:0AAEH         LINE#         99
+  C:0AB1H         LINE#         100
+  C:0AB4H         LINE#         101
+  C:0ABCH         LINE#         102
+  C:0AC2H         LINE#         103
+BL51 BANKED LINKER/LOCATER V6.22                                                      05/05/2022  22:38:30  PAGE 5
+
+
+  C:0AC2H         LINE#         104
+  C:0AC6H         LINE#         105
+  C:0ACEH         LINE#         106
+  C:0AD1H         LINE#         107
+  C:0AD1H         LINE#         108
+  C:0AD4H         LINE#         109
+  -------         ENDPROC       TIME0
+  -------         PROC          ZHONGDUAN0
+  C:0B41H         LINE#         111
+  C:0B54H         LINE#         113
+  C:0B57H         LINE#         114
+  C:0B5AH         LINE#         115
+  C:0B5AH         LINE#         116
+  C:0B5CH         LINE#         117
+  C:0B5EH         LINE#         118
+  C:0B61H         LINE#         119
+  C:0B61H         LINE#         120
+  C:0B6CH         LINE#         121
+  C:0B6CH         LINE#         122
+  C:0B72H         LINE#         123
+  C:0B75H         LINE#         124
+  C:0B75H         LINE#         125
+  C:0B77H         LINE#         126
+  C:0B77H         LINE#         128
+  C:0B7AH         LINE#         129
+  -------         ENDPROC       ZHONGDUAN0
+  -------         PROC          ZHONGDUAN1
+  C:0AEFH         LINE#         131
+  C:0B0CH         LINE#         133
+  C:0B12H         LINE#         134
+  C:0B15H         LINE#         135
+  C:0B18H         LINE#         136
+  C:0B1EH         LINE#         137
+  C:0B20H         LINE#         138
+  C:0B23H         LINE#         139
+  C:0B26H         LINE#         140
+  -------         ENDPROC       ZHONGDUAN1
+  -------         ENDMOD        MAN
+
+  -------         MODULE        ?C?UIDIV
+  C:0800H         PUBLIC        ?C?UIDIV
+  -------         ENDMOD        ?C?UIDIV
+
+  -------         MODULE        ?C?SLDIV
+  C:0B8BH         PUBLIC        ?C?SLDIV
+  -------         ENDMOD        ?C?SLDIV
+
+  -------         MODULE        ?C?ULDIV
+  C:0891H         PUBLIC        ?C?ULDIV
+  -------         ENDMOD        ?C?ULDIV
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 024EH BYTE (28%) *
+******************************************************************************
+
+Program Size: data=22.0 xdata=0 code=1093
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

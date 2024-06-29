@@ -1,0 +1,46 @@
+A51 MACRO ASSEMBLER  LED                                                                  04/08/2022 12:22:05 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02c
+OBJECT MODULE PLACED IN .\Objects\led.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE led.a51 SET(SMALL) DEBUG PRINT(.\Listings\led.lst) OBJECT(.\Objects\led
+                      .obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000 74FE              1     START:      MOV     A,#0FEH             ;让A的内容为11111110
+0002 F590              2     LOOP:       MOV     P1,A           ;让P1口输出ACC的内容
+                       3     
+0004 110A              4                 CALL    DELAY       ;调用延时子程序
+                       5                             
+0006 23                6                             RL A
+0007 020002            7                 LJMP    LOOP         ;跳到LOOP处执行
+                       8     ;0.1秒延时子程序（12MHz晶振）===================
+000A 7F0A              9     DELAY: MOV      R7,#10    ;延时1S子程序
+000C 7EC8             10     DL1:   MOV      R6,#200
+000E 7DF8             11     DL2:   MOV      R5,#248
+0010 DDFE             12            DJNZ     R5,$
+0012 DEFA             13            DJNZ     R6,DL2
+0014 DFF6             14            DJNZ     R7,DL1
+0016 22               15             RET
+                      16                     END
+A51 MACRO ASSEMBLER  LED                                                                  04/08/2022 12:22:05 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+DELAY. . . . . . .  C ADDR   000AH   A   
+DL1. . . . . . . .  C ADDR   000CH   A   
+DL2. . . . . . . .  C ADDR   000EH   A   
+LOOP . . . . . . .  C ADDR   0002H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+START. . . . . . .  C ADDR   0000H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)
